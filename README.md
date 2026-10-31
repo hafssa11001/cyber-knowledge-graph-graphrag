@@ -216,24 +216,9 @@ Pop-Location
 
 The backend tests use stubs and do not prove behavior against live Neo4j or Ollama services. Live integration checks should be run separately.
 
-## Limitations & Ethics
-
-This is an engineering and evaluation project, not production threat intelligence. The graph is built partly through LLM extraction: `AFFECTS` and `HAS_WEAKNESS` edges are inferred claims, marked with their provenance, and are not independently verified facts.
-
-- **The benchmark gold describes the LLM-built graph**, not the real world. The oracle only proves query/gold consistency.
-- **Type D is "silver"**: keyword matching on CVE text.
-- **Prompts were tuned after a four-question pilot** that remains in the benchmark. The comparison is not blind.
-- **One run per question and approach**: differences are indicative, not statistical. Latency depends on CPU load; only the ordering of approaches is stable.
-- **Small, selected corpus** (60 KEV CVEs, 9 chained pairs): it does not support sector-level conclusions.
-- **Grounding checks textual support, not truth**; weakness phrases are not filtered. The extraction prompt keeps a fixed few-shot example whose influence has not been measured.
-- **Declared sources are constrained to retrieved context** (a source cannot be invented) but may still be misattributed.
-- **Text2Cypher is not formally sandboxed**: it relies on a keyword denylist and read-only access.
-- **API protections are per process**; there is no TLS, identity management, or audit log. Keep `API_KEY` set outside local development.
-- **Data provenance and licensing remain the user's responsibility** when redistributing data from CISA, NVD, or GitHub; no licence audit of redistributed data has been performed.
 
 ## Credits
 
-- **Project author:** Hafssa Sajia.
 - **Data sources:** CISA KEV, NVD, and GitHub Advisory Database.
 - **Open-source components:** the tools and models listed in [Tech Stack](#tech-stack) retain their respective licenses and terms.
-- **License:** MIT; see [`LICENSE`](LICENSE). Before publishing, update the copyright holder in `LICENSE` from `[Ton Nom]` to **Hafssa Sajia**.
+
